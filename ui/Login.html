@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FTB - Faculty Tool Box Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            padding: 20px;
+            background: #0f0f1e;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .login-container {
+            display: flex;
+            width: 75%;
+            max-width: 950px;
+            min-height: 85vh;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            margin: 40px auto;
+            overflow: visible;
+        }
+        .login-left {
+            background: linear-gradient(135deg, #ff7b00, #ff9933);
+            padding: 40px 30px;
+            width: 45%;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .logo-container img {
+           width: 180px;
+            height: auto;
+            max-height: 100px;
+            border-radius: 8px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            object-fit: contain;
+            background: white;
+            padding: 10px;
+        }
+        .login-left h1 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .login-left p {
+            font-size: 14px;
+            line-height: 1.5;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .brand-info {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+        }
+        .brand-info p {
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+        .login-right {
+            padding: 40px 40px;
+            width: 55%;
+            display: flex;
+            flex-direction: column;
+        }
+        .toggle-container {
+            display: flex;
+            background: #f1f3f5;
+            border-radius: 50px;
+            padding: 4px;
+            margin-bottom: 25px;
+        }
+        .toggle-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border: none;
+            background: transparent;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 600;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #ff7b00, #ff9933);
+            color: white;
+            box-shadow: 0 4px 15px#ff7b00;
+        }
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+        .form-subtitle {
+            color: #718096;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        .demo-note {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            color: #4a5568;
+            font-weight: 500;
+            font-size: 13px;
+        }
+        .form-group label i {
+            margin-right: 6px;
+            color: #ff7b00;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #ff7b00;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+        .remember-me input {
+            margin-right: 6px;
+        }
+        .remember-me label {
+            font-size: 13px;
+            color: #4a5568;
+        }
+        .forgot-link {
+            color: #ff7b00;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+        .login-btn {
+            width: 100%;
+            padding: 13px;
+            background: linear-gradient(135deg, #ff7b00, #ff9933);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        .info-text {
+            text-align: center;
+            margin-top: 18px;
+            color: #718096;
+            font-size: 12px;
+        }
+        .info-text a {
+            color: #ff7b00;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .video-background::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 245, 235, 0.85) 0%, rgba(255, 228, 204, 0.85) 100%);
+            z-index: 1;
+        }
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            filter: brightness(0.6) contrast(1.2) saturate(1.3);
+        }
+        .overlay-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 140, 26, 0.6);
+            border-radius: 50%;
+            animation: floatParticle linear infinite;
+            box-shadow: 0 0 8px rgba(255, 140, 26, 0.4);
+        }
+        .particle:nth-child(1) { top: 20%; left: 10%; animation-duration: 15s; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 40%; left: 30%; animation-duration: 12s; animation-delay: 2s; }
+        .particle:nth-child(3) { top: 60%; left: 50%; animation-duration: 18s; animation-delay: 4s; }
+        .particle:nth-child(4) { top: 30%; right: 20%; animation-duration: 14s; animation-delay: 1s; }
+        .particle:nth-child(5) { top: 70%; right: 40%; animation-duration: 16s; animation-delay: 3s; }
+        @keyframes floatParticle {
+            0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+            10% { opacity: 1; }
+            50% { transform: translateY(-50vh) translateX(30px) scale(1.5); }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(60px) scale(0.5); opacity: 0; }
+        }
+        .copyright-notice {
+            text-align: right;
+            margin-top: 20px;
+            font-size: 12px;
+            color: #ff7b00;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="video-background">
+        <video id="bg-video" autoplay loop muted playsinline>
+            <source src="https://player.vimeo.com/external/374498877.sd.mp4?s=c4c731d99b0aa29909ec6893ac1f395e7db9d5f5&profile_id=165&oauth2_token_id=57447761" type="video/mp4">
+        </video>
+    </div>
+    <div class="overlay-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="logo-container">
+                 <img src="{{ url_for('static', filename='Nivid_old_logo_HD.png') }}" alt="Nivid Logo">
+            </div>
+            <div>
+                <h1>Faculty Tool Box</h1>
+                <p>Access comprehensive learning models and tools for Witness software. Enhance your business process simulation skills with our curated model library and resources.</p>
+            </div>
+            <div class="brand-info">
+                <p><i class="fas fa-graduation-cap"></i> Powered by Nivid Informatics Pvt.Ltd</p>
+                <p>Your gateway to mastering business process simulation and process optimization.</p>
+            </div>
+        </div>
+        <div class="login-right">
+            <div class="toggle-container">
+                <button class="toggle-btn active" onclick="switchLogin('student')">
+                    <i class="fas fa-user-graduate"></i> Student Login
+                </button>
+                <button class="toggle-btn" onclick="switchLogin('teacher')">
+                    <i class="fas fa-chalkboard-teacher"></i> Teacher Login
+                </button>
+            </div>
+            <div id="student-form">
+                <h2 class="form-title">Welcome Back, Student!</h2>
+                <p class="form-subtitle">Enter your credentials to access your learning dashboard</p>
+                <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div>
+                <form method="post" action="/login">
+                    <input type="hidden" name="user_type" value="student">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Student Name</label>
+                        <input type="name" name="name"  placeholder="Enter Your Full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-envelope"></i> Email Address</label>
+                        <input type="email" name="email" placeholder="student@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-lock"></i> Password</label>
+                        <input type="password" name="password" placeholder="Enter your password" required minlength="4">
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> FTB Activation Key</label>
+                        <input type="text" name="activation_key" placeholder="Enter your activation key">
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember">
+                            <label for="remember">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                    </button>
+                    <p class="info-text">
+                        Don't have access? <a href="#">Contact nivid.co.in</a>
+                    </p>
+                    <div class="copyright-notice">
+                        © by Nivid Informatics Pvt Ltd
+                    </div>
+                </form>
+            </div>
+            <div id="teacher-form" style="display: none;">
+                <h2 class="form-title">Welcome Back, Teacher!</h2>
+                <p class="form-subtitle">Enter your credentials to access the teaching dashboard</p>
+                <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div>
+                <form method="post" action="/login">
+                    <input type="hidden" name="user_type" value="teacher">
+                    <div class="form-group">
+                        <label><i class="fas fa-user"></i> Teacher Name</label>
+                        <input type="name" name="name"  placeholder="Enter Your Full name" required>
+                    </div>
+                    <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email Address</label>
+                    <input type="email" name="email" placeholder="teacher@example.com" required>
+                    </div>
+                <div class="form-group">
+                <label><i class="fas fa-lock"></i> Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required minlength="4">
+            </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-key"></i> FTB Activation Key</label>
+                        <input type="text" name="activation_key" placeholder="Enter your activation key">
+                    </div>
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="remember-teacher">
+                            <label for="remember-teacher">Remember me</label>
+                        </div>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt"></i> Login to Dashboard
+                    </button>
+                    <p class="info-text">
+                        Need assistance? <a href="#">Contact Support</a>
+                    </p>
+                    <div class="copyright-notice">
+                        © by Nivid Informatics Pvt Ltd
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function switchLogin(type) {
+            const studentForm = document.getElementById('student-form');
+            const teacherForm = document.getElementById('teacher-form');
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            if (type === 'student') {
+                studentForm.style.display = 'block';
+                teacherForm.style.display = 'none';
+                toggleBtns[0].classList.add('active');
+                toggleBtns[1].classList.remove('active');
+            } else {
+                studentForm.style.display = 'none';
+                teacherForm.style.display = 'block';
+                toggleBtns[0].classList.remove('active');
+                toggleBtns[1].classList.add('active');
+            }
+        }
+        document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+        const email = this.querySelector('[name="email"]').value.trim();
+        const password = this.querySelector('[name="password"]').value;
+
+        const errorDiv = this.querySelector('#error-message');
+
+        if (!email || !password) {
+            e.preventDefault(); // Stop form submit
+            errorDiv.style.display = 'block';
+            // Optional: scroll to error
+            errorDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return false;
+        }
+    });
+});
+        
+    </script>
+</body>
+</html>
