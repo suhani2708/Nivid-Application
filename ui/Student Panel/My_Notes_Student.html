@@ -565,7 +565,7 @@
         <li><a href="Model_Library.html"><i class="fas fa-cube"></i> Model Library</a></li>
         <li><a href="My_Notes_Student.html" class="active"><i class="fas fa-sticky-note"></i> My Notes</a></li>
         <li><a href="/student/exercises"><i class="fas fa-clipboard-list"></i> Exercise Library</a></li>
-        <li><a href="https://exam.nivid.co.in/auth/login.php"><i class="fas fa-sign-out-alt"></i> Exam</a></li>
+        <li><a href="https://exam.nivid.co.in/auth/login.php" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i>Give Exam</a></li>
     </ul>
 </div>
 
@@ -597,6 +597,9 @@
                             </div>
                             <div class="mode-option" data-mode="model" id="modelMode">
                                 <i class="fas fa-cube"></i> Search by Model
+                            </div>
+                            <div class="mode-option" data-mode="keyword" id="keywordMode">
+                                <i class="fas fa-keyboard"></i> Search by Keyword
                             </div>
                             <div class="mode-input-container">
                                 <input type="text" class="mode-input" id="searchModelInput" placeholder="e.g., Line Balancing" style="display:none;">
@@ -790,7 +793,16 @@
                     const noteTags = note.tags ? note.tags.toLowerCase() : '';
                     
                     shouldShow = noteTitle.includes(searchTerm) || noteTags.includes(searchTerm);
-                }
+                }else if (currentSearchMode === 'keyword') {
+                const searchTerm = query.toLowerCase();
+                const noteTitle = note.title.toLowerCase();
+                const noteContent = note.content.toLowerCase();
+                const noteTags = note.tags ? note.tags.toLowerCase() : '';
+    
+                shouldShow = noteTitle.includes(searchTerm) || 
+                 noteContent.includes(searchTerm) || 
+                 noteTags.includes(searchTerm);
+}
 
                 card.style.display = shouldShow ? 'block' : 'none';
             });
@@ -1116,7 +1128,7 @@
         }
 
         // 🚀 Initialize
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {    
             loadNotes();
             
             // Setup search mode selector
@@ -1124,6 +1136,7 @@
             const modeDropdown = document.getElementById('modeDropdown');
             const dateMode = document.getElementById('dateMode');
             const modelMode = document.getElementById('modelMode');
+            const keywordMode = document.getElementById('keywordMode');
             const searchModelInput = document.getElementById('searchModelInput');
             
             // Toggle dropdown on click
@@ -1163,6 +1176,16 @@
                
                 modeDropdown.classList.remove('selected');
                 filterNotesBySearchMode();
+            });
+            keywordMode.addEventListener('click', function(e) {
+                e.stopPropagation();
+                currentSearchMode = 'keyword';
+                searchModelInput.placeholder = 'e.g., workstation, efficiency';
+                searchModelInput.value = '';
+                searchModelInput.style.display = 'block';
+                modeDropdown.classList.remove('selected');
+                modeDropdown.classList.remove('selected');
+            filterNotesBySearchMode();
             });
             
             // Add event listener for search input

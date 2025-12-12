@@ -44,25 +44,64 @@
             flex-direction: column;
             justify-content: center;
             position: relative;
-        }
+            border-radius: 24px 0 0 24px; /* curve only left corners, keep right flat to align with container */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1); /* subtle inner glow for depth */
+            backdrop-filter: blur(10px); /* optional — enhances glass-morphism if desired */
+            border-right: 1px solid rgba(255, 255, 255, 0.3); /* optional — adds subtle divider */
+}
+        
         .logo-container {
             text-align: center;
             margin-bottom: 25px;
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            z-index: 10;
+            width: 160px;   /* थोडी कमी केली */
+            height: auto;
+            padding: 8px;
+            text-align: left; 
         }
         .logo-container img {
-           width: 180px;
+           width: 120px;
             height: auto;
-            max-height: 100px;
+            max-height:80px;
             border-radius: 8px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             object-fit: contain;
             background: white;
-            padding: 10px;
+            padding: 6px;
+        }
+        .content-wrapper {
+            margin-top: 120px; 
+            text-align: center;
+            padding: 0 20px;
+        }
+        .new-logo-container {
+        margin: 10px 0 5px;
+        text-align: center;
+        background: none !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        }
+        .new-logo-container img {
+        width: 190px;
+        height: auto;
+        max-height: 190px;
+        border-radius: 0;
+        box-shadow: none;
+        object-fit: contain;
+        background: none;
+        padding: 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
         }
         .login-left h1 {
             font-size: 26px;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 5px;
             text-align: center;
         }
         .login-left p {
@@ -281,6 +320,10 @@
             color: #ff7b00;
             font-weight: 500;
         }
+        @keyframes modalFadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -301,6 +344,11 @@
             <div class="logo-container">
                  <img src="{{ url_for('static', filename='Nivid_old_logo_HD.png') }}" alt="Nivid Logo">
             </div>
+         <div class="new-logo-container">
+             <div class="new-logo-container">
+        <img src="../Nividnewlogo.png" alt="Nivid New Logo">
+    </div>
+        </div>    
             <div>
                 <h1>Faculty Tool Box</h1>
                 <p>Access comprehensive learning models and tools for Witness software. Enhance your business process simulation skills with our curated model library and resources.</p>
@@ -309,6 +357,18 @@
                 <p><i class="fas fa-graduation-cap"></i> Powered by Nivid Informatics Pvt.Ltd</p>
                 <p>Your gateway to mastering business process simulation and process optimization.</p>
             </div>
+            <div class="version-info" style="position: absolute;bottom:2px; left: 0;right: 0;
+            padding: 6px 15px;
+            text-align: center;
+            font-size: 11px;
+           color: #ffffff;
+           text-align: left;
+           font-weight: 500;
+            letter-spacing: 0.5px;
+           box-sizing: border-box;">
+                Faculty Tool Box - Basic Version 1.0
+            </div>
+
         </div>
         <div class="login-right">
             <div class="toggle-container">
@@ -322,32 +382,32 @@
             <div id="student-form">
                 <h2 class="form-title">Welcome Back, Student!</h2>
                 <p class="form-subtitle">Enter your credentials to access your learning dashboard</p>
-                <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div>
+                <!-- <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div> -->
                 <form method="post" action="/login">
                     <input type="hidden" name="user_type" value="student">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label><i class="fas fa-user"></i> Student Name</label>
                         <input type="name" name="name"  placeholder="Enter Your Full name" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label><i class="fas fa-envelope"></i> Email Address</label>
                         <input type="email" name="email" placeholder="student@example.com" required>
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label><i class="fas fa-lock"></i> Password</label>
                         <input type="password" name="password" placeholder="Enter your password" required minlength="4">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label><i class="fas fa-key"></i> FTB Activation Key</label>
                         <input type="text" name="activation_key" placeholder="Enter your activation key">
                     </div>
-                    <div class="remember-forgot">
+                    <!-- <div class="remember-forgot">
                         <div class="remember-me">
                             <input type="checkbox" id="remember">
                             <label for="remember">Remember me</label>
                         </div>
                         <a href="#" class="forgot-link">Forgot Password?</a>
-                    </div>
+                    </div> -->
                     <button type="submit" class="login-btn">
                         <i class="fas fa-sign-in-alt"></i> Login to Dashboard
                     </button>
@@ -362,32 +422,32 @@
             <div id="teacher-form" style="display: none;">
                 <h2 class="form-title">Welcome Back, Teacher!</h2>
                 <p class="form-subtitle">Enter your credentials to access the teaching dashboard</p>
-                <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div>
+                <!-- <div class="demo-note">Demo Mode: Enter any values or leave empty - all inputs work!</div> -->
                 <form method="post" action="/login">
                     <input type="hidden" name="user_type" value="teacher">
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <label><i class="fas fa-user"></i> Teacher Name</label>
                         <input type="name" name="name"  placeholder="Enter Your Full name" required>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                     <label><i class="fas fa-envelope"></i> Email Address</label>
                     <input type="email" name="email" placeholder="teacher@example.com" required>
                     </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                 <label><i class="fas fa-lock"></i> Password</label>
                 <input type="password" name="password" placeholder="Enter your password" required minlength="4">
-            </div>
+            </div> -->
                     <div class="form-group">
                         <label><i class="fas fa-key"></i> FTB Activation Key</label>
                         <input type="text" name="activation_key" placeholder="Enter your activation key">
                     </div>
-                    <div class="remember-forgot">
+                    <!-- <div class="remember-forgot">
                         <div class="remember-me">
                             <input type="checkbox" id="remember-teacher">
                             <label for="remember-teacher">Remember me</label>
                         </div>
                         <a href="#" class="forgot-link">Forgot Password?</a>
-                    </div>
+                    </div> -->
                     <button type="submit" class="login-btn">
                         <i class="fas fa-sign-in-alt"></i> Login to Dashboard
                     </button>
@@ -434,6 +494,28 @@
         }
     });
 });
+
+// 🔥 SECURITY: Prevent back/forward access to stale authenticated pages
+if (window.performance && window.performance.navigation) {
+    // Legacy browsers
+    if (window.performance.navigation.type === 2) { // TYPE_BACK_FORWARD
+        window.location.replace(window.location.href.split('#')[0]);
+    }
+} else {
+    // Modern browsers (PerformanceNavigationTiming)
+    const perfEntries = performance.getEntriesByType("navigation");
+    if (perfEntries.length > 0 && perfEntries[0].type === "back_forward") {
+        window.location.replace(window.location.href);
+    }
+}
+
+// Optional: Disable browser cache for this page (double protection)
+window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+        window.location.reload();
+    }
+});
+
         
     </script>
 </body>

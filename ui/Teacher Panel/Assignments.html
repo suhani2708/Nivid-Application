@@ -265,7 +265,7 @@
         <div class="header">
             <div class="header-title">
                 <h1>Exercises</h1>
-                <p>View and download exercise slips and instructions</p>
+                <p>View Exercises for Hands-On Practice</p>
             </div>
             <button class="back-btn" onclick="window.history.back()">
                 <i class="fas fa-arrow-left"></i> Back
@@ -282,32 +282,31 @@
             </div>
         </div>
 
-        <div class="filter-tabs">
+<div class="filter-tabs">
             <div class="filter-dropdown">
-            <select id="categoryFilter" onchange="filterAssignments()">
-                <option value="">All Models</option>
-                <option value="Critical Path Method">Critical Path Method & Project Evaluation Review Technique</option>
-                <option value="Hospital Resource Planning">Hospital Resource Planning</option>
-                <option value="Inventory Planning">Inventory Planning</option>
-                <option value="Johnson's Rule">Johnson's Rule</option>
-                <option value="Just In Time (JIT)">Just In Time (JIT)</option>
-                <option value="Layout Planning">Layout Planning</option>
-                <option value="Lean Manufacturing">Lean Manufacturing</option>
-                <option value="Line Balancing">Line Balancing</option>
-                <option value="Logistics Planning">Logistics Planning</option>
-                <option value="Maintenance Planning">Maintenance Planning</option>
-                <option value="Material Control Techniques">Material Control Techniques</option>
-                <option value="Material Requirements Planning">Material Requirements Planning</option>
-                <option value="Production Scheduling">Production Scheduling</option>
-                <option value="Queuing Theory">Queuing Theory</option>
-                <option value="reliability">Reliability Engineering</option>
-            </select>
+                <select id="categoryFilter" onchange="filterAssignments()">
+                    <option value="">All Models</option>
+                    <option value="Critical Path Method">Critical Path Method & Project Evaluation Review Technique</option>
+                    <option value="Hospital Resource Planning">Hospital Resource Planning</option>
+                    <option value="Inventory Planning">Inventory Planning</option>
+                    <option value="Johnson's Rule">Johnson's Rule</option>
+                    <option value="Just In Time (JIT)">Just In Time (JIT)</option>
+                    <option value="Layout Planning">Layout Planning</option>
+                    <option value="Lean Manufacturing">Lean Manufacturing</option>
+                    <option value="Line Balancing">Line Balancing</option>
+                    <option value="Logistics Planning">Logistics Planning</option>
+                    <option value="Maintenance Planning">Maintenance Planning</option>
+                    <option value="Material Control Techniques">Material Control Techniques</option>
+                    <option value="Material Requirements Planning">Material Requirements Planning</option>
+                    <option value="Production Scheduling">Production Scheduling</option>
+                    <option value="Queuing Theory">Queuing Theory</option>
+                    <option value="reliability">Reliability Engineering</option>
+                </select>
+            </div>
         </div>
-        </div>
-
         <div class="assignments-list">
-            <!-- Critical Path Method -->
-            <div class="assignment-card">
+            <!-- Critical Path Method & Project Evaluation Review Technique -->
+            <div class="assignment-card" onclick="toggleDropdown(event, 'critical_path')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Critical Path Method & Project Evaluation Review Technique</h3>
@@ -318,7 +317,7 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('critical_path')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'critical_path')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
@@ -327,7 +326,7 @@
                         <div class="exercise-info">
                             <span>Exercise: Critical Path Method & Project Evaluation Review Technique</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Critical Path Method/Step-by-step_Student_Simplified_Critical_Path_Method&Project_Evaluation_Review_Technique.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Critical Path Method/Step-by-step_Student_Simplified_Critical_Path_Method&Project_Evaluation_Review_Technique.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Critical_Path_Method&Project_Evaluation_Review_Technique.pdf
                         </a>
                     </div>
@@ -335,7 +334,7 @@
             </div>
 
             <!-- Hospital Resource Planning -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'hospital_resource')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Hospital Resource Planning</h3>
@@ -346,17 +345,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('hospital_resource_planning')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'hospital_resource')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
-                <div id="hospital_resource_planning" class="exercise-dropdown">
+                <div id="hospital_resource" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
                             <span>Exercise: Hospital Resource Planning</span>
                         </div>
-                        <a href="#" class="file-link" 
-                           onclick="openExerciseFile('Hospital Resource Planning/Step-by-step_Student_Simplified_Hospital_Resource_Planning.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Hospital Resource Planning/Step-by-step_Student_Simplified_Hospital_Resource_Planning.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Hospital_Resource_Planning.pdf
                         </a>
                     </div>
@@ -364,7 +362,7 @@
             </div>
 
             <!-- Line Balancing -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'line_balancing')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Line Balancing</h3>
@@ -375,16 +373,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('line_balancing')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'line_balancing')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="line_balancing" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 1: Line Balancing Analysis</span>
+                            <span>Exercise: Line Balancing Analysis</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Line Balancing/Step-by-step_Student_Simplified_Line_Balancing.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Line Balancing/Step-by-step_Student_Simplified_Line_Balancing.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Line_Balancing.pdf
                         </a>
                     </div>
@@ -392,7 +390,7 @@
             </div>
 
             <!-- Inventory Planning -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'inventory_planning')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Inventory Planning</h3>
@@ -403,24 +401,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('supply_chain')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'inventory_planning')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
-                <div id="supply_chain" class="exercise-dropdown">
+                <div id="inventory_planning" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 2: Network Design</span>
+                            <span>Exercise: Network Design</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Inventory Planning/Step-by-step_Student_Simplified_Inventory_planning.docx')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Inventory Planning/Step-by-Step_Student_Simplified_Inventory_Planning.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Inventory_planning.pdf
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- MRP -->
-            <div class="assignment-card">
+            <!-- Material Requirements Planning -->
+            <div class="assignment-card" onclick="toggleDropdown(event, 'mrp')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Material Requirements Planning</h3>
@@ -431,16 +429,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('mrp')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'mrp')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="mrp" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: MRP Calculation</span>
+                            <span>Exercise: MRP Calculation</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Material Requirements Planning (MRP)/Step-by-step_Student_Simplified_Material_Requirements_Planning.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Material Requirements Planning (MRP)/Step-by-step_Student_Simplified_Material_Requirements_Planning.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Material_Requirements_Planning.pdf
                         </a>
                     </div>
@@ -448,7 +446,7 @@
             </div>
 
             <!-- Johnson's Rule -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'johnsons_rule')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Johnson's Rule</h3>
@@ -459,16 +457,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('johnsons_rule')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'johnsons_rule')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="johnsons_rule" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Johnson's Rule</span>
+                            <span>Exercise: Johnson's Rule</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Johnson_s Rule/Step-by-step_Student_Simplified_Jhonson_s_Rule.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Johnson_s Rule/Step-by-step_Student_Simplified_Jhonson_s_Rule.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Jhonson_s_Rule.pdf
                         </a>
                     </div>
@@ -476,7 +474,7 @@
             </div>
 
             <!-- Reliability -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'reliability')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Reliability</h3>
@@ -487,24 +485,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('reliability')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'reliability')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="reliability" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Reliability</span>
+                            <span>Exercise: Reliability</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Reliability/Step-by-step_Student_Simplified_Reliability.docx')">
-                            <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Reliability.docx
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Reliability/Step-by-Step_Student_Simplified_Reliability_Engineering.pdf')">
+                            <i class="fas fa-file-pdf"></i> Step-by-Step_Student_Simplified_Reliability_Engineering.pdf
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- JIT -->
-            <div class="assignment-card">
+            <!-- Just In Time (JIT) -->
+            <div class="assignment-card" onclick="toggleDropdown(event, 'jit')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Just In Time (JIT)</h3>
@@ -515,16 +513,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('jit')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'jit')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="jit" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: JIT Calculation</span>
+                            <span>Exercise: JIT Calculation</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Just In Time (JIT)-20251120T133109Z-1-001/Just In Time (JIT)/Step-by-step_Student_Simplified_Just_in_Time.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Just In Time (JIT)/Step-by-step_Student_Simplified_Just_in_Time.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Just_in_Time.pdf
                         </a>
                     </div>
@@ -532,7 +530,7 @@
             </div>
 
             <!-- Layout Planning -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'layout_planning')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Layout Planning</h3>
@@ -543,24 +541,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('layout_planning')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'layout_planning')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="layout_planning" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Layout Planning</span>
+                            <span>Exercise: Layout Planning</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Layout Planning/Step-by-step_Student_Simplified_Layout_planning.docx')">
-                            <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Layout_planning.docx
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Layout Planning/Step-by-Step_Student_Simplified_Layout_Planning.pdf')">
+                            <i class="fas fa-file-pdf"></i>Step-by-Step_Student_Simplified_Layout_Planning.pdf
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Lean Manufacturing -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'lean_manufacturing')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Lean Manufacturing</h3>
@@ -571,16 +569,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('lean_manufacturing')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'lean_manufacturing')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="lean_manufacturing" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Lean Manufacturing</span>
+                            <span>Exercise: Lean Manufacturing</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Lean Manufacturing/Step-by-step_Student_Simplified_Lean_Manufacturing.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Lean Manufacturing/Step-by-step_Student_Simplified_Lean_Manufacturing.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Lean_Manufacturing.pdf
                         </a>
                     </div>
@@ -588,7 +586,7 @@
             </div>
 
             <!-- Logistics Planning -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'logistics_planning')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Logistics Planning</h3>
@@ -599,16 +597,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('logistics_planning')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'logistics_planning')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="logistics_planning" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Logistics Planning</span>
+                            <span>Exercise: Logistics Planning</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Logistics Planning/Step-by-step_Student_Simplified_Logistics_Planning.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Logistics Planning/Step-by-step_Student_Simplified_Logistics_Planning.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Logistics_Planning.pdf
                         </a>
                     </div>
@@ -616,7 +614,7 @@
             </div>
 
             <!-- Maintenance Planning -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'maintenance_planning')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Maintenance Planning</h3>
@@ -627,24 +625,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('maintenance_planning')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'maintenance_planning')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="maintenance_planning" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 3: Maintenance Planning</span>
+                            <span>Exercise: Maintenance Planning</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Maintenance Planning/Step-by-step_Student_Simplified_Maintenance Planning.docx')">
-                            <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Maintenance Planning.docx
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Maintenance Planning/Step-by-Step_Student_Simplified_Maintenance_Planning.pdf')">
+                            <i class="fas fa-file-pdf"></i> Step-by-Step_Student_Simplified_Maintenance_Planning.pdf
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Material Control Techniques -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'material_control')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Material Control Techniques</h3>
@@ -655,24 +653,24 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('material_control')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'material_control')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="material_control" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 4: Material Control Techniques</span>
+                            <span>Exercise: Material Control Techniques</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Material Control Techniques/Step-by-step_Student_Simplified_Material Control Techniques.docx')">
-                            <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Material Control Techniques.docx
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Material Control Techniques/Step-by-Step_Student_Simplified_Material_Control_Techniques.pdf')">
+                            <i class="fas fa-file-pdf"></i>Step-by-Step_Student_Simplified_Material_Control_Techniques.pdf
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Production Scheduling -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'production_scheduling')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Production Scheduling</h3>
@@ -683,16 +681,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('production_scheduling')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'production_scheduling')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="production_scheduling" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 4: Production Scheduling</span>
+                            <span>Exercise: Production Scheduling</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Production Scheduling/Step-by-step_Student_Simplified_Production_Scheduling.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Production Scheduling/Step-by-step_Student_Simplified_Production_Scheduling.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Production_Scheduling.pdf
                         </a>
                     </div>
@@ -700,7 +698,7 @@
             </div>
 
             <!-- Queuing Theory -->
-            <div class="assignment-card">
+            <div class="assignment-card" onclick="toggleDropdown(event, 'queuing_theory')">
                 <div class="assignment-header">
                     <div class="assignment-title">
                         <h3>Queuing Theory</h3>
@@ -711,16 +709,16 @@
                             </div>
                         </div>
                     </div>
-                    <button class="dropdown-toggle" onclick="toggleDropdown('queuing_theory')">
+                    <button class="dropdown-toggle" onclick="event.stopPropagation(); toggleDropdown(event, 'queuing_theory')">
                         <i class="fas fa-chevron-down"></i>
                     </button>
                 </div>
                 <div id="queuing_theory" class="exercise-dropdown">
                     <div class="exercise-item">
                         <div class="exercise-info">
-                            <span>Exercise 5: Queuing Theory</span>
+                            <span>Exercise: Queuing Theory</span>
                         </div>
-                        <a href="#" class="file-link" onclick="openExerciseFile('Queuing Theory/Step-by-step_Student_Simplified_Queuing_Theory.pdf')">
+                        <a href="#" class="file-link" onclick="event.stopPropagation(); openExerciseFile('Queuing Theory/Step-by-step_Student_Simplified_Queuing_Theory.pdf')">
                             <i class="fas fa-file-pdf"></i> Step-by-step_Student_Simplified_Queuing_Theory.pdf
                         </a>
                     </div>
@@ -729,67 +727,79 @@
         </div>
     </div>
 
-    <script>
-        function openExerciseFile(fileName) {
-            console.log('Opening exercise file:', fileName);
-            fetch('/api/launch_file', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    file_path: fileName,
-                    module_id: 'exercise'
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Exercise PDF opened successfully!');
-                } else {
-                    alert('Error opening file: ' + data.error);
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error opening PDF. Please try again.');
-            });
-        }
+     <script>
+    function openExerciseFile(fileName) {
+        console.log('Opening exercise file:', fileName);
 
-        function toggleDropdown(id) {
-            const dropdown = document.getElementById(id);
-            if (dropdown.style.display === 'block') {
-                dropdown.style.display = 'none';
+        fetch('/api/launch_file', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                file_path: fileName,
+                module_id: 'exercise'
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log('File opened successfully');
             } else {
-                dropdown.style.display = 'block';
+                console.error('Error opening file:', data.error);
             }
-        }
-
-        // Sort cards by title on load
-        document.addEventListener('DOMContentLoaded', function() {
-            const container = document.querySelector('.assignments-list');
-            const cards = Array.from(container.children);
-            cards.sort((a, b) => {
-                const titleA = a.querySelector('h3').textContent.trim().toLowerCase();
-                const titleB = b.querySelector('h3').textContent.trim().toLowerCase();
-                return titleA.localeCompare(titleB);
-            });
-            cards.forEach(card => container.appendChild(card));
+        })
+        .catch(error => {
+            console.error('Fetch error:', error);
         });
+    }
 
-        function filterAssignments() {
-            const filterValue = document.getElementById('categoryFilter').value.toLowerCase();
-            const assignmentCards = document.querySelectorAll('.assignment-card');
-            
-            assignmentCards.forEach(card => {
-                const title = card.querySelector('h3').textContent.toLowerCase();
-                const tags = card.querySelector('.meta-item span').textContent.toLowerCase();
-                
-                if (filterValue === '' || title.includes(filterValue) || tags.includes(filterValue)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
+
+
+    function toggleDropdown(event, id) {
+        const dropdown = document.getElementById(id);
+        if (!dropdown) return;
+
+        dropdown.style.display = (dropdown.style.display === 'block') ? 'none' : 'block';
+
+        openCard(event);
+    }
+    function openCard(event) {
+        const card = event.target.closest('.assignment-card');
+        if (!card) return;
+
+        card.classList.toggle('open');
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll('.assignment-card').forEach(card => {
+            card.addEventListener('click', openCard);
+        });
+    });
+    const container = document.querySelector('.assignments-list');
+    const cards = Array.from(container.children);
+
+    cards.sort((a, b) => {
+        const titleA = a.querySelector('h3').textContent.trim().toLowerCase();
+        const titleB = b.querySelector('h3').textContent.trim().toLowerCase();
+        return titleA.localeCompare(titleB);
+    });
+
+    cards.forEach(card => container.appendChild(card));
+    function filterAssignments() {
+        const filterValue = document.getElementById('categoryFilter').value.toLowerCase();
+        const assignmentCards = document.querySelectorAll('.assignment-card');
+
+        assignmentCards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const tags = card.querySelector('.meta-item span').textContent.toLowerCase();
+
+            if (filterValue === '' || title.includes(filterValue) || tags.includes(filterValue)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+</script>
+
 </body>
 </html>

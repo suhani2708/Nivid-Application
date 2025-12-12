@@ -30,7 +30,6 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
         }
         .logo-container {
            text-align: center;
@@ -387,39 +386,31 @@
 
         .menu a.menu-item-logout:hover,
         .menu a.menu-item-logout:focus {
-            background: linear-gradient(135deg, #ff7b00, #ff9933); /* matches your sidebar gradient */
+            background: linear-gradient(135deg, #ff7b00, #ff9933);
             color: white;
             border-left: 4px solid white;
-            transform: none; /* optional: if you don’t want it to lift on hover */
+            transform: none;
         }
     </style>
 </head>
 <body>
     <div class="sidebar">
-     <div class="logo-container">
-                 <img src="{{ url_for('static', filename='Nivid_old_logo_HD.png') }}" alt="Nivid Logo">
-    </div>
-    <div class="title-group">
-    <h2 style="text-align: center; vertical-align: middle; margin: 0 0 5 0; color: white;">FTB</h2>
-    <p style="text-align: center; vertical-align: middle; margin-top:5px; font-size: 16px; color: white;">Faculty Tool Box</p>
-     </div>
-            
-            
-       
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='Nivid_old_logo_HD.png') }}" alt="Nivid Logo">
+        </div>
+        <div class="title-group">
+            <h2 style="text-align: center; vertical-align: middle; margin: 0 0 5px 0; color: white;">FTB</h2>
+            <p style="text-align: center; vertical-align: middle; margin-top:5px; font-size: 16px; color: white;">Faculty Tool Box</p>
+        </div>
         <ul class="menu">
             <li><a href="Student_Dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
             <li><a href="Model_Library.html"><i class="fas fa-cube"></i> Model Library</a></li>
             <li><a href="My_Notes_Student.html"><i class="fas fa-sticky-note"></i> My Notes</a></li>
             <li><a href="/student/exercises"><i class="fas fa-clipboard-list"></i> Exercise Library</a></li>
-            <!-- <li><a href="#"><i class="fas fa-book"></i> Resources</a></li> -->
-            <li><a href="https://exam.nivid.co.in/auth/login.php" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i> Exam</a></li>
-            <li style="margin-top: auto;"><a href="/logout" class="logout-btn-sidebar"><i class="fas fa-sign-out-alt"></i> Logout </a>
-    </li>
-           
+            <li><a href="https://exam.nivid.co.in/auth/login.php" target="_blank" rel="noopener noreferrer"><i class="fas fa-cog"></i>Give Exam</a></li>
+            <li style="margin-top: auto;"><a href="/logout" class="logout-btn-sidebar"><i class="fas fa-sign-out-alt"></i> Logout </a></li>
         </ul>
-    
-     </div>
-    
+    </div>
 
     <div class="main-content">
         <div class="header">
@@ -428,22 +419,20 @@
                 <p style="color: #718096; font-size: 14px; margin-top: 5px;">Here's what's happening with your learning today</p>
             </div>
             <div class="user-info">
-                <div>
-                    <div class="user-details">
-                        <h4>{{session.name}}</h4>
-                        <p>{{session.email}}</p>
-                    </div>
+                <div class="user-details">
+                    <h4>{{session.name}}</h4>
+                    <p>{{session.email}}</p>
                 </div>
                 <div class="user-avatar">
-                {% set parts = session.name.split() %}
-                {% if parts|length >= 2 %}
-                 {{ parts[0][0]|upper }}{{ parts[-1][0]|upper }}
-                {% elif parts|length == 1 %}
-                {{ parts[0][0:2]|upper }}
-                {% else %}
-                US
-                {% endif %}
-            </div>
+                    {% set parts = session.name.split() %}
+                    {% if parts|length >= 2 %}
+                        {{ parts[0][0]|upper }}{{ parts[-1][0]|upper }}
+                    {% elif parts|length == 1 %}
+                        {{ parts[0][0:2]|upper }}
+                    {% else %}
+                        US
+                    {% endif %}
+                </div>
             </div>
         </div>
 
@@ -462,8 +451,6 @@
                 <h3>15</h3>
                 <p> Total Exercises</p>
             </div>
-
-           
         </div>
 
         <div class="content-grid">
@@ -492,40 +479,7 @@
                 </div>
             </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <h2>Recent Activity</h2>
-                </div>
-                
-                    <div class="activity-item">
-                        <div class="activity-icon orange">
-                            <i class="fas fa-sticky-note"></i>
-                        </div>
-                        <div class="activity-content">
-                            <h4>Note Created</h4>
-                            <p>Lean Manufacturing concepts • 2 days ago</p>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon purple">
-                            <i class="fas fa-play-circle"></i>
-                        </div>
-                        <div class="activity-content">
-                            <h4>Opened Application</h4>
-                            <p>Witness Software • 3 days ago</p>
-                        </div>
-                    </div>
-                    <div class="activity-item">
-                        <div class="activity-icon green">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="activity-content">
-                            <h4>Viewed User Guide</h4>
-                            <p>MRP Model Documentation • 1 week ago</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
         </div>
     </div>
 </body>
